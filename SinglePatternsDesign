@@ -1,0 +1,52 @@
+package singlepatternsdesign;
+
+/**
+ *
+ * @author Umutk
+ */
+ public class Preferences{
+
+    
+    private static Preferences instance; 
+    protected Preferences() {
+        
+    }
+    
+    private synchronized static void CreateInstence(){
+        
+        if(instance==null){
+            instance=new Preferences();
+        }
+        
+        
+    }
+    public  static Preferences GetInstence(){
+        
+        if(instance==null){
+            CreateInstence();
+        }
+        return instance;
+    }
+     
+    public void HelloSinglteon(){
+        System.out.println("Hello Singlteon");
+    }
+}
+//////////////////////////Birinci java sayfa//////////////////////
+package singlepatternsdesign;
+
+public class SinglePatternsDesign extends Preferences {
+
+}
+/////////////////////İkinci Java Sayfa//////////////////////////
+package singlepatternsdesign;
+
+public class Client {
+
+    public static void main(String[] args) {
+        Preferences.GetInstence().HelloSinglteon();
+        SinglePatternsDesign.GetInstence().HelloSinglteon();
+
+    }
+}
+///////////////////Çalıştır////////////////
